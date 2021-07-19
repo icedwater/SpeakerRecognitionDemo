@@ -1,33 +1,29 @@
 # Speaker Recognition Demo
 
-This code is modified based on https://github.com/clovaai/voxceleb_trainer , include the pretrain model.
+This code is modified based on https://github.com/clovaai/voxceleb_trainer, and includes the pre-trained model.
 
 ## What it can do ?
-This code can output the recognition scores between the test utterance (the utterance you want to know the the speaker id) and all enrollment utterances (the utterances you have registed and already known the speaker id) based on the person's unique voiceprint.
+This code can output the recognition score comparing a test utterance (with a speaker you wish to identify) with enrolled utterances (the utterances you have registered with known speakers) based on the person's unique voiceprint.
 
 ## How to use ?
 
 ### Clone the code:
 
-```
-git clone https://github.com/TaoRuijie/SpeakerRecognitionDemo
-```
+    git clone https://github.com/icedwater/SpeakerRecognitionDemo
 
 ### Input: 
   
-  Put the wav files you have registed in the `data/enrollment_audio` folder. Put the wav file you want to test in `data/test_audio` folder (You can put multiple test audio file, each test audio will generate one score list).
+  Put the wav files you have registered in the `data/enrollment_audio` folder. Put the wav file you want to test in `data/test_audio` folder (You can put multiple test audio files, each test audio will generate one score list).
 
-### Commend:
+### Command:
 
-```
-python demoSpeakerNet.py
-```
+    python demoSpeakerNet.py
 
 ### Output: 
   
-  The score is the speaker recognition score between the test utterance and all enrollment utterances, the score is higher, the utterance tends to come from the same speaker (The highest is 0.0).  
+  The speaker recognition score is a sort of difference score between the test utterance and all enrolled utterances. Utterances from the same speaker will tend to yield a higher score (the highest is 0.0).
   
-  For instance: There are 7 audios in `data/enrollment_audio` and 1 audio in `data/test_audio`. You can get the following output:
+  For instance: There are 7 audio files in `data/enrollment_audio` and 1 audio in `data/test_audio`. You can get the following output:
 
 
 |    |     A1 |
@@ -41,7 +37,7 @@ python demoSpeakerNet.py
 | C1 | -1.3756|
 
 	
-`A1` and `A2` come from the same speaker, so they have the highest score.
+`A1` and `A2` come from the same speaker, so that pair will have the highest score.
 
 ## Other issue:
 
@@ -59,7 +55,7 @@ python demoSpeakerNet.py
 
 - Threshold setting
 
-	It depends on the dataset. Just for suggestion: usually the score between 0 to -1.0 can be viewed as the same speaker, score small than -1.0 can be viewed as different speaker.
+	It depends on the dataset. Just for suggestion: usually the score between 0 to -1.0 can be viewed as the same speaker, score below -1.0 can be viewed as different speaker.
 
 - Reference
 
